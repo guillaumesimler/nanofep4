@@ -129,6 +129,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-mkdir');
 
     // 4. progran starter (don't forget to add the plugin)
-    grunt.registerTask('default', ['mkdir', 'responsive_images', 'imagemin']);
+    grunt.registerTask('default', ['imagemin']);
 
 };
