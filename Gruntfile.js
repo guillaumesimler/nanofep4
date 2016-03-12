@@ -1,4 +1,4 @@
-// Master Grunt Gruntfile.js
+// Master Grunt Gruntfile.js adaoted for the projectgit
 // Author: Guillaume Simler (for more info please check my Github Profile)
 // Configured in March 2013
 
@@ -60,23 +60,16 @@ module.exports = function(grunt) {
                     sizes: [
                         {
                             width: 400,
-                            quality: 80,
-                            suffix: '_2x'
-                        },
-
-                        { 
-                            width: 400,
-                            quality: 40,
-                            suffix: '_1x'
+                            quality: 50
                         }
                     ]
                 },
             
                 files: [{
                   expand: true,
-                  src: ['**.{jpg,gif,png,JPG,GIF,PNG}'],
-                  cwd: 'src/images/',
-                  dest: 'dir/images/'
+                  src: ['pizzeria.jpg'],
+                  cwd: 'src/views/images/',
+                  dest: 'src/views/images/'
                 }]
             }
         },
@@ -87,9 +80,9 @@ module.exports = function(grunt) {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: 'dir/images/',
+                    cwd: 'src/views/images/',
                     src: ['**/*.{png,jpg,gif,JPG,GIF,PNG}'],
-                    dest: 'dir/images/'
+                    dest: 'src/views/images/'
                 }]
             }
         },
@@ -118,7 +111,7 @@ module.exports = function(grunt) {
         mkdir: {
             all: {
                 options: {
-                    create: ['dir/js', 'dir/css', 'dir/images']
+                    create: ['dir/js', 'dir/css', 'dir/images','dir/views/images/']
                 }
             }
         }
@@ -136,6 +129,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-mkdir');
 
     // 4. progran starter (don't forget to add the plugin)
-    grunt.registerTask('default', ['imagemin']);
+    grunt.registerTask('default', ['mkdir', 'responsive_images', 'imagemin']);
 
 };

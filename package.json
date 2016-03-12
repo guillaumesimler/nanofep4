@@ -5,7 +5,7 @@
     "type": "git",
     "url": "https://github.com/guillaumesimler/gruntmaster"
   },
-  "licenses": {
+  "license": {
     "type": "MIT",
     "url": "https://github.com/guillaumesimler/gruntmaster/blob/master/LICENSE.txt"
   },
