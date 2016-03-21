@@ -1,4 +1,3 @@
-
 // Master Grunt Gruntfile.js
 // Author: Guillaume Simler (for more info please check my Github Profile)
 // Configured in March 2013
@@ -19,7 +18,7 @@ module.exports = function(grunt) {
                     cwd: 'src/css/',
                     src: ['*.css', '!*.min.css'],
                     dest: 'dir/css/',
-                    ext: '.css'
+                    ext: '.min.css'
             }]
           }
         },
@@ -88,7 +87,7 @@ module.exports = function(grunt) {
             dynamic: {
                 files: [{
                     expand: true,
-                    cwd: 'src/images/',
+                    cwd: 'dir/images/',
                     src: ['**/*.{png,jpg,gif,JPG,GIF,PNG}'],
                     dest: 'dir/images/'
                 }]
@@ -137,6 +136,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-mkdir');
 
     // 4. progran starter (don't forget to add the plugin)
-    grunt.registerTask('default', ['htmlmin']);
+    grunt.registerTask('default', ['imagemin']);
 
 };
