@@ -506,7 +506,6 @@ function updatePositions() {
 
   // Get Math.sin(...) out of the main loop and into an array
   var pos = [];
-
   for (var i = 0; i < 5; i++){
     pos.push(Math.sin((document.body.scrollTop / 1250) + i));
   }
@@ -541,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < nbPizza; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.png";
+    elem.src = "images/pizza-73.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
