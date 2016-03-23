@@ -26,14 +26,13 @@ The original README can be found [here](https://github.com/udacity/frontend-nano
 
 Latest Updates (more details on [Github](https://github.com/guillaumesimler/nanofep4/commits/master))
 ----
-
+2016 03 21: Optimize main page
 
 Repo folder structure
 ----
 You will find the following structure on the repository
 * **"src"** will contain the development directory
 * **"dir"** will contain the productive directory
-* **"grunt"** contains the two main grunt files
 * **"PageInsight ..."*** contains the screenshots of the PageInsight measurements
 
 
