@@ -503,8 +503,16 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+
+  // Get Math.sin(...) out of the main loop and into an array
+  var pos = [];
+
+  for (var i = 0; i < 5; i++){
+    pos.push(Math.sin((document.body.scrollTop / 1250) + i));
+  }
+
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = pos[i % 5];
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -529,8 +537,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // This variable reduces the number of pizzas to the screen size
   // screen height 
   var nbPizza = Math.ceil((window.innerHeight / s )) * cols;
-  console.log(window.innerHeight);
-  console.log("number of rows" + nbPizza / cols);
 
   for (var i = 0; i < nbPizza; i++) {
     var elem = document.createElement('img');
