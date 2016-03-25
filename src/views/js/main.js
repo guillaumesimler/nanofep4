@@ -431,7 +431,7 @@ var resizePizzas = function(size) {
 
     var newwidth = 100 / (5-size)
 
-    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
 
     for (var i = 0; i < randomPizzas.length; i++) {
       randomPizzas[i].style.width = newwidth +'%';
@@ -483,7 +483,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
 
-  var items = document.querySelectorAll('.mover');
+  var items = document.getElementsByClassName('mover');
 
   // Get Math.sin(...) out of the main loop and into an array
   var pos = [];
