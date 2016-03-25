@@ -41,12 +41,12 @@ Use of grunt
 Grunt was widely used in this project. A complete readme of my generic Gruntfiles can be read on its [own Github repository](https://github.com/guillaumesimler/gruntmaster)
 
 ###### Used modules
-
+	
 **A word of caution: order of use**
 You need to run the point (1) first, the point (6) last. The points (2)-(5) can be run in any order.
 
 
-1. **Make Directory & Clean**
+###### **Make Directory & Clean**
 
 _Used modules_ 
 * grunt-contrib-clean
@@ -70,7 +70,7 @@ mkdir: {
 }
 ```
 
-2. **Minify the javascripts**
+###### **Minify the javascripts**
 
 _Used module_ 
 * grunt-contrib-uglify
@@ -90,7 +90,7 @@ uglify: {
 },
 ````
 
-3. **Minify the CSS**
+###### **Minify the CSS**
 
 _Used module_ 
 * grunt-contrib-cssmin
@@ -111,7 +111,7 @@ cssmin: {
 },
 ```
 
-4. **Compress the images**
+###### **Compress the images**
 
 _Used module_ 
 * grunt-contrib-imagemin
@@ -131,7 +131,7 @@ imagemin: {
 },
 ```
 
-5. **Inline CSS and JS**
+###### **Inline CSS and JS**
 
 !!!_Important:_ The productive HTML file could need editing!!!
 
@@ -152,7 +152,7 @@ inlinecss: {
 },
 ```
 
-6. **Minify HTML**
+###### **Minify HTML**
 
 !!!_Important:_ Needs to run last !!!
 
