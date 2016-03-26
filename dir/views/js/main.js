@@ -521,6 +521,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var nbPizza = Math.ceil((window.innerHeight / s )) * cols;
 
   var elem;
+  
   for (var i = 0; i < nbPizza; i++) {
     elem = document.createElement('img');
     elem.className = 'mover';

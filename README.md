@@ -35,8 +35,59 @@ You will find the following structure on the repository
 * **"dir"** will contain the productive directory
 * **"PageInsight ..."*** contains the screenshots of the PageInsight measurements
 
+Optimization done on dir/view/js/main
+----
+
+###### **Generic changes**
+
+* replaced _document.querySelector("#id")_ by the faster [API _document.getElementById("id")_](https://jsperf.com/getelementbyid-vs-queryselector/11)
+
+Example: Replacing
+```javascript
+	document.querySelector("#movingPizzas1").appendChild(elem);
+```
+
+by
+
+```javascript
+	document.getElementById("movingPizzas1").appendChild(elem);
+```
+
+* replaced _document.querySelectorall(".class")_ by the faster [document.getElementsByClassName("class")_](hhttps://jsperf.com/getelementsbyclassname-vs-queryselectorall/25)
+
+Example: Replacing
+```javascript
+	var items = document.querySelectorAll('.mover');
+```
+
+by
+
+```javascript
+	var items = document.getElementsByClassName('mover');
+```
+
+* pulled the _variable declaration out of the loops_ to avoid repetitive variable creation, especially if it is linked with a DOM Selection 
+
+Example: Replacing
+```javascript
+ 	for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
+		document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+	}
+```
+
+by
+
+```javascript
+	var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
+ 
+ 	for (var i = 0; i < randomPizzas.length; i++) {
+	    randomPizzas[i].style.width = newwidth +'%';
+	}
+```
+
 
 Use of grunt
+
 ----
 Grunt was widely used in this project. A complete readme of my generic Gruntfiles can be read on its [own Github repository](https://github.com/guillaumesimler/gruntmaster)
 
