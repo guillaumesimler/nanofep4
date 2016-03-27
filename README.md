@@ -24,9 +24,15 @@ Your **challenge**, if you wish to accept it (and we sure hope you will), is to 
 The original README can be found [here](https://github.com/udacity/frontend-nanodegree-mobile-portfolio/blob/master/README.md)
 
 
-Latest Updates (more details on [Github](https://github.com/guillaumesimler/nanofep4/commits/master))
+How to install
 ----
-2016 03 21: Optimize main page
+The best way is to [clone the github repository](https://github.com/guillaumesimler/nanofep4.git)
+
+How to use
+----
+Please use 
+* **dir**/index.html to have a look at the webpage optimization
+* **dir**/view/pizza.html to see the webapp optimization
 
 Repo folder structure
 ----
@@ -59,7 +65,6 @@ Example: Replacing
 ```javascript
 	var items = document.querySelectorAll('.mover');
 ```
-
 by
 
 ```javascript
@@ -74,9 +79,7 @@ Example: Replacing
 		document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
 	}
 ```
-
 by
-
 ```javascript
 	var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
  
@@ -85,9 +88,113 @@ by
 	}
 ```
 
+###### **Specific changes**
+
+* "_Slimfast the pizzas_" -->  work on _document.addEventListener('DOMContentLoaded, ...)_
+
+The number of pizzas can be calculate "dynamically" instead of using the fix value of 200. In case of the window size of 1500 px, you'd need 48 pizzas (-76%)
+```javascript
+for (var i = 0; i < 200; i++)
+```
+vs 
+```javascript
+var nbPizza = Math.ceil((window.innerHeight / s )) * cols;
+for (var i = 0; i < nbPizza; i++) 
+```
+
+Moreover by changing the picture to a pizza-73-png (73x100px), you can save 39px (from 49px) and probably more if you reduce quality (still at 100%)
+```javascript
+	elem.src = "images/pizza.png";
+```
+vs 
+```javascript
+	elem.src = "images/pizza-73.png";
+```
+With thess two steps **you can reduce the weight of pizzas by ~95%**
+
+* add requestframeAnimation
+
+Make sure frames are fired in transforming 
+```javascript
+window.addEventListener('scroll', updatePositions);
+```
+in
+```javascript
+window.addEventListener('scroll', function () {
+ 	window.requestAnimationFrame(updatePositions)
+});
+```
+and 
+
+```javascript
+    elem.style.top = (Math.floor(i / cols) * s) + 'px';
+      document.querySelector("#movingPizzas1").appendChild(elem);
+    }
+	updatePositions();
+	window.requestAnimationFrame(updatePositions);
+  });
+```
+in
+
+```javascript
+    elem.style.top = (Math.floor(i / cols) * s) + 'px';
+      document.querySelector("#movingPizzas1").appendChild(elem);
+    }
+    window.requestAnimationFrame(updatePositions);
+  });
+```
+
+
+* Improve pizza resizing (Sliding)
+
+Replace the heavy version (with additonal function dermineDx())
+```javascript
+function changePizzaSizes(size) {
+	for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
+		var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
+		var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+		document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+	}
+}
+```
+by
+```javascript
+function changePizzaSizes(size) {
+    var newwidth = 100 / (5-size);
+    var randomPizzas = document.getElementsByClassName("randomPizzaContainer");
+
+    for (var i = 0; i < randomPizzas.length; i++) {
+    	randomPizzas[i].style.width = newwidth +'%';
+    }
+}
+```
+* Allow CSS.3 accelaration
+
+Add _will-change_ and _transform: translateZ(0)_ as well as _backface-visibility:hidden_ and extending the webkits by using [this website](http://autoprefixer.github.io/)
+.mover {
+  position: fixed;
+  width: 256px;
+  z-index: -1;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+
+}
+
+.randomPizzaContainer {
+  float: left;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+```
+
+
 
 Use of grunt
-
 ----
 Grunt was widely used in this project. A complete readme of my generic Gruntfiles can be read on its [own Github repository](https://github.com/guillaumesimler/gruntmaster)
 
