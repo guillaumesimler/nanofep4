@@ -171,6 +171,7 @@ function changePizzaSizes(size) {
 * Allow CSS.3 accelaration
 
 Add _will-change_ and _transform: translateZ(0)_ as well as _backface-visibility:hidden_ and extending the webkits by using [this website](http://autoprefixer.github.io/)
+```css
 .mover {
   position: fixed;
   width: 256px;
